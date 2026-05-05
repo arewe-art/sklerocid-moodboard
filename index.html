@@ -795,6 +795,47 @@ a.stock-q:hover .q-arrow {
 }
 
 /* ============================================================
+   Lightbox (fullscreen image preview)
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: zoom-out;
+  padding: 40px;
+  backdrop-filter: blur(6px);
+  animation: lb-fade 180ms ease;
+}
+.lightbox.is-open { display: flex; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  animation: lb-zoom 180ms ease;
+}
+.lightbox-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lb-zoom { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+#sec-color .color-spec-img img { cursor: zoom-in; }
+
+/* ============================================================
    Footer
    ============================================================ */
 footer {
@@ -1526,9 +1567,15 @@ footer {
 </section>
 
 <footer>
-  <span>Склероцид · Moodboard v1.4</span>
+  <span>Склероцид · Moodboard v1.5</span>
   <span>BTU Biotech Company · Nature works</span>
 </footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-hint">click anywhere or press ESC to close</div>
+</div>
 
 </div>
 
@@ -1567,6 +1614,33 @@ footer {
     const sw = e.target.closest('.swatch');
     if (!sw) return;
     applyAccent(sw.dataset.color);
+  });
+
+  // ---- lightbox for 3D and Color sections ----
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  function openLB(src) {
+    lbImg.src = src;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+  lb.addEventListener('click', closeLB);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLB();
+  });
+  document.querySelectorAll('#sec-3d .ref a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLB(a.getAttribute('href'));
+    });
+  });
+  document.querySelectorAll('#sec-color .color-spec-img img').forEach(img => {
+    img.addEventListener('click', () => openLB(img.src));
   });
 
   // ---- mini palette for lower-third plates (independent of brand accent) ----
