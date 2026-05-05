@@ -1,0 +1,22 @@
+# backups and logs
+_backup-images/
+logs/
+
+# scripts (not for public)
+scripts/
+
+# unused source assets
+assets/products/sklerocid_canisters_brandbook.png
+refs/source/
+refs/sunflower/sunflower-side-healthy.png
+refs/sunflower/sunflower-3q-healthy.png
+refs/sunflower/sunflower-infected-bud.png
+refs/sunflower/sunflower-infected-stem.png
+refs/sunflower/sunflower-late-stage.png
+refs/enhanced/phc-3-enhanced.png
+
+# secrets / system
+.env
+.DS_Store
+__pycache__/
+*.pyc

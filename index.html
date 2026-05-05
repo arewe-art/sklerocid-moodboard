@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Склероцид — Moodboard · BTU</title>
+
+<style>
+/* ============================================================
+   Fonts — BTU 016 (custom typeface from BTU brand identity)
+   ============================================================ */
+@font-face {
+  font-family: "BTU";
+  src: url("assets/fonts/BTU_016-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BTU";
+  src: url("assets/fonts/BTU_016-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BTU";
+  src: url("assets/fonts/BTU_016-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BTU Cond";
+  src: url("assets/fonts/BTU_016-CondRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   BTU brand tokens
+   ============================================================ */
+:root {
+  --black:     #000000;
+  --white:     #FFFFFF;
+
+  /* secondary palette — Pantone codes per Colors.pdf + brandbook */
+  --c-yellow:  #F3D54E; /* Pantone 128 C — Sklerocid accent */
+  --c-blue:    #7FADE3; /* Pantone 2142 C */
+  --c-green:   #93DA49; /* Pantone 2285 C */
+  --c-pink:    #E782A9; /* Pantone 204 C */
+  --c-coral:   #FF8674; /* Pantone 170 C */
+  --c-brown:   #986A4C; /* Pantone 2468 C */
+  --c-gray:    #BABBB1; /* Pantone 413 C */
+  --c-lavend:  #A7A4E0; /* Pantone 2705 C */
+  --c-lblue:   #B7DDE1; /* Pantone 628 C */
+  --c-orange:  #FB8132; /* Pantone 6018 C — extended palette */
+
+  /* page tokens */
+  --bg:        var(--white);
+  --fg:        var(--black);
+  --muted:     #6b7280;
+  --line:      #e5e5e2;
+  --surface:   #f6f6f3;
+  --accent:    var(--c-yellow); /* Sklerocid accent */
+  --plate-accent: var(--c-yellow); /* lower-third local accent */
+  --plate-text-on: #000; /* text color on plate-accent block (auto-switched by JS) */
+  --radius:    14px;
+  --radius-sm: 8px;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "BTU", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--fg); text-decoration: none; }
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px 28px 96px;
+}
+
+/* ============================================================
+   Sticky nav
+   ============================================================ */
+nav.toc {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 28px;
+  margin: 0 -28px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+nav.toc .brand-mark {
+  font-family: "BTU";
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-right: 16px;
+  padding-right: 16px;
+  border-right: 1px solid var(--line);
+}
+nav.toc a {
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+nav.toc a:hover { background: var(--surface); color: var(--fg); }
+
+/* ============================================================
+   Hero — black, BTU style
+   ============================================================ */
+.hero {
+  background: var(--black);
+  color: var(--white);
+  border-radius: var(--radius);
+  margin: 28px 0 56px;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  min-height: 520px;
+}
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+
+.hero-text {
+  padding: 40px 44px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.hero-meta img { height: 28px; width: auto; filter: invert(1); }
+
+.hero h1 {
+  font-family: "BTU";
+  font-weight: 700;
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin: 24px 0 16px;
+}
+.hero h1 .accent {
+  background: var(--accent);
+  color: var(--black);
+  padding: 0 0.18em 0.04em;
+  border-radius: 4px;
+  display: inline-block;
+}
+.hero .lead {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 460px;
+  margin: 0 0 24px;
+}
+.hero .slogan {
+  font-family: "BTU";
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero .slogan::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.hero-img {
+  position: relative;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.hero-img img {
+  max-width: 100%;
+  max-height: 480px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ============================================================
+   Spec strip
+   ============================================================ */
+.spec-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+.spec-strip .cell {
+  background: var(--bg);
+  padding: 16px 18px;
+}
+.spec-strip .label {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.spec-strip .value {
+  font-family: "BTU";
+  font-weight: 500;
+  font-size: 17px;
+}
+
+/* ============================================================
+   Section heads
+   ============================================================ */
+section { margin-bottom: 80px; scroll-margin-top: 90px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--black);
+}
+.section-head .num {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.section-head h2 {
+  font-family: "BTU";
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.section-head .count {
+  margin-left: auto;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Brand block: logo · palette · type
+   ============================================================ */
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 820px) { .brand-grid { grid-template-columns: 1fr; } }
+
+.brand-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 24px 26px;
+  min-height: 200px;
+}
+.brand-card.is-black {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+.brand-card h4 {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.brand-card.is-black h4 { color: rgba(255,255,255,0.55); }
+
+.brand-card .logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+.brand-card .logo-wrap img {
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  filter: invert(1);
+}
+
+/* palette */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+.swatch {
+  aspect-ratio: 1 / 1.1;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 9px;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: rgba(0,0,0,0.6);
+  border: 1px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  user-select: none;
+}
+.swatch:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+.swatch.dark { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.1); }
+.swatch.is-accent {
+  outline: 2px solid var(--black);
+  outline-offset: 3px;
+}
+
+/* logo card reactive bg */
+.brand-card.is-logo {
+  background: var(--accent);
+  color: var(--black);
+  border-color: var(--accent);
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+.brand-card.is-logo h4 { color: rgba(0,0,0,0.55); }
+.brand-card.is-logo .logo-wrap img { filter: none; }
+/* dark accent variants — invert logo */
+.brand-card.is-logo.on-dark { color: var(--white); }
+.brand-card.is-logo.on-dark h4 { color: rgba(255,255,255,0.55); }
+.brand-card.is-logo.on-dark .logo-wrap img { filter: invert(1); }
+
+/* typography sample */
+.type-sample {
+  font-family: "BTU";
+  margin-top: 8px;
+}
+.type-sample .row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.brand-card.is-black .type-sample .row { border-bottom-color: rgba(255,255,255,0.1); }
+.type-sample .row:last-child { border-bottom: none; }
+.type-sample .name {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  width: 110px;
+  flex-shrink: 0;
+}
+.brand-card.is-black .type-sample .name { color: rgba(255,255,255,0.5); }
+.type-sample .demo { font-size: 22px; }
+.type-sample .row.r1 .demo { font-weight: 400; }
+.type-sample .row.r2 .demo { font-weight: 500; }
+.type-sample .row.r3 .demo { font-weight: 700; }
+.type-sample .row.r4 .demo { font-family: "BTU Cond"; font-weight: 400; }
+
+/* ============================================================
+   Color spec layout
+   ============================================================ */
+.color-spec {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 920px) { .color-spec { grid-template-columns: 1fr; } }
+
+.color-spec-img {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #0d0f12;
+  border: 1px solid var(--line);
+}
+.color-spec-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.color-spec-img .cs-tag {
+  position: absolute;
+  bottom: 14px; left: 16px;
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.color-spec-text {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 22px 24px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.color-spec-text h4 {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.color-spec-text h4:not(:first-of-type) { margin-top: 22px; }
+.color-spec-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.color-spec-text li {
+  position: relative;
+  padding: 6px 0 6px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--fg);
+}
+.color-spec-text li:last-child { border-bottom: none; }
+.color-spec-text li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.color-spec-text li b {
+  font-weight: 500;
+  color: var(--muted);
+  margin-right: 6px;
+  font-size: 11px;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.cs-swatches {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+}
+.cs-sw {
+  flex: 1;
+  height: 24px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ============================================================
+   Section note (disclaimer/hint under section-head)
+   ============================================================ */
+.section-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: -8px 0 22px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.04);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: "BTU", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.section-note span {
+  font-weight: 700;
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   Stock search cards
+   ============================================================ */
+.stock-q {
+  aspect-ratio: 16 / 10;
+  background-color: #0d0f12;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+a.stock-q:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  text-decoration: none;
+}
+.stock-q .q-arrow {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-family: "BTU", sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: color 200ms ease, transform 200ms ease;
+}
+a.stock-q:hover .q-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+.stock-q::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.92) 100%);
+  z-index: 0;
+  transition: background 200ms ease;
+}
+.stock-q:hover::before {
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.85) 100%);
+}
+.stock-q > * { position: relative; z-index: 1; }
+.stock-q .q-num {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.stock-q .q-title {
+  font-family: "BTU";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 6px 0 4px;
+}
+.stock-q .q-en {
+  font-family: "BTU";
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 10px;
+}
+.stock-q .q-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.stock-q .q-source {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.85);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.stock-q .q-source:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  text-decoration: none;
+}
+
+/* ============================================================
+   Mini palette (lower-third color picker)
+   ============================================================ */
+.mini-palette {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+.mini-palette .mp-label {
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-right: 6px;
+  white-space: nowrap;
+}
+.mini-palette .mp-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.mini-palette .mp-sw {
+  width: 26px; height: 26px;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 120ms ease;
+  user-select: none;
+}
+.mini-palette .mp-sw:hover { transform: translateY(-1px); }
+.mini-palette .mp-sw.is-active { outline: 2px solid var(--black); outline-offset: 2px; }
+
+/* ============================================================
+   Lower-third demo cards
+   ============================================================ */
+.lt-card {
+  aspect-ratio: 16 / 10;
+  background: #0d0f12;
+  background-image:
+    radial-gradient(circle at 50% 60%, rgba(255,255,255,0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #1a1d22 0%, #0a0b0d 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0;
+}
+.lt-card .lt-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 12px 14px;
+}
+.lt-card .lt-cap {
+  position: absolute;
+  top: 8px; left: 10px;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.lt-card svg .lt-yellow { fill: var(--plate-accent); }
+.lt-card svg text { font-family: "BTU", sans-serif; fill: #fff; }
+.lt-card svg .t-on-yellow { fill: var(--plate-text-on); }
+.lt-card svg .t-name { font-weight: 700; }
+.lt-card svg .t-sub { font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; }
+
+/* ============================================================
+   Subgroup
+   ============================================================ */
+.subgroup { margin-top: 28px; }
+.subgroup:first-of-type { margin-top: 8px; }
+.sub-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.sub-head h3 {
+  font-family: "BTU";
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.sub-head .sub-count {
+  margin-left: auto;
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Reference grid
+   ============================================================ */
+.refs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.ref {
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+.ref.is-empty::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, transparent 49%, var(--line) 49.5%, var(--line) 50.5%, transparent 51%);
+  opacity: 0.7;
+}
+.ref.is-empty span {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+.ref a, .ref img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ref img {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+.ref a:hover img { transform: scale(1.04); }
+.ref .cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 6px 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: rgba(255,255,255,0.85);
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer {
+  margin-top: 96px;
+  padding-top: 28px;
+  border-top: 2px solid var(--black);
+  font-family: "BTU Cond", "BTU", sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .palette { grid-template-columns: repeat(4, 1fr); }
+  .hero-text { padding: 28px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Sticky nav -->
+<nav class="toc">
+  <span class="brand-mark">BTU · Sklerocid</span>
+  <a href="#brand">Brand</a>
+  <a href="#sec-3d">3D</a>
+  <a href="#sec-2d">2D / Плашки</a>
+  <a href="#sec-field">Поле</a>
+  <a href="#sec-lab">Лабораторія</a>
+  <a href="#sec-color">Колір</a>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-meta">
+      <img src="assets/logos/btu_logo.png" alt="BTU Institute of Biotechnology">
+      <span>Moodboard · 2026-05-05</span>
+    </div>
+    <div>
+      <h1>
+        <span class="accent">Склероцид</span><br>
+        візуальний<br>
+        мудборд
+      </h1>
+      <p class="lead">
+        Біопрепарат фунгіцидної дії для захисту рослин проти збудників білої гнилі та інших хвороб.
+      </p>
+      <div class="slogan">Nature works</div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="assets/products/sunflower_soya_cutout.png" alt="Sunflower">
+  </div>
+</header>
+
+<!-- ============== SPEC STRIP ============== -->
+<div class="spec-strip">
+  <div class="cell"><div class="label">Хронометраж</div><div class="value">4:26</div></div>
+  <div class="cell"><div class="label">Блоків</div><div class="value">6</div></div>
+  <div class="cell"><div class="label">Формат A</div><div class="value">16:9</div></div>
+  <div class="cell"><div class="label">Формат B</div><div class="value">9:16</div></div>
+  <div class="cell"><div class="label">Роздільність</div><div class="value">1920×1080</div></div>
+  <div class="cell"><div class="label">FPS</div><div class="value">25</div></div>
+  <div class="cell"><div class="label">Кодек</div><div class="value">.mp4 · H.264</div></div>
+</div>
+
+<!-- ============== BRAND ============== -->
+<section id="brand">
+  <div class="section-head">
+    <span class="num">00</span>
+    <h2>Brand kit</h2>
+    <span class="count">BTU 016 · Pantone</span>
+  </div>
+
+  <div class="brand-grid">
+    <div class="brand-card is-logo on-dark" id="logo-card" data-color="#000000">
+      <h4>Logo</h4>
+      <div class="logo-wrap"><img src="assets/logos/btu_logo.png" alt="BTU"></div>
+    </div>
+    <div class="brand-card">
+      <h4>Palette · клікни на колір</h4>
+      <div class="palette" id="palette">
+        <div class="swatch dark"      data-color="#000000" style="background:#000000">Black<br>#000000</div>
+        <div class="swatch is-accent" data-color="#F3D54E" style="background:#F3D54E">P 128<br>#F3D54E</div>
+        <div class="swatch"           data-color="#7FADE3" style="background:#7FADE3">P 2142<br>#7FADE3</div>
+        <div class="swatch"           data-color="#93DA49" style="background:#93DA49">P 2285<br>#93DA49</div>
+        <div class="swatch"           data-color="#E782A9" style="background:#E782A9">P 204<br>#E782A9</div>
+        <div class="swatch"           data-color="#FF8674" style="background:#FF8674">P 170<br>#FF8674</div>
+        <div class="swatch dark"      data-color="#986A4C" style="background:#986A4C">P 2468<br>#986A4C</div>
+        <div class="swatch"           data-color="#BABBB1" style="background:#BABBB1">P 413<br>#BABBB1</div>
+        <div class="swatch"           data-color="#A7A4E0" style="background:#A7A4E0">P 2705<br>#A7A4E0</div>
+        <div class="swatch"           data-color="#B7DDE1" style="background:#B7DDE1">P 628<br>#B7DDE1</div>
+        <div class="swatch"           data-color="#FB8132" style="background:#FB8132">P 6018<br>#FB8132</div>
+        <div class="swatch"           data-color="#FFFFFF" style="background:#FFFFFF">White<br>#FFFFFF</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-card">
+    <h4>Typography · BTU 016</h4>
+    <div class="type-sample">
+      <div class="row r1"><div class="name">Regular · 400</div><div class="demo">Склероцид · Біла гниль · Sclerotinia</div></div>
+      <div class="row r2"><div class="name">Medium · 500</div><div class="demo">Склероцид · Біла гниль · Sclerotinia</div></div>
+      <div class="row r3"><div class="name">Bold · 700</div><div class="demo">Склероцид · Біла гниль · Sclerotinia</div></div>
+      <div class="row r4"><div class="name">Cond · 400</div><div class="demo">Склероцид · Біла гниль · Sclerotinia</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 3D ============== -->
+<section id="sec-3d">
+  <div class="section-head">
+    <span class="num">01</span>
+    <h2>3D</h2>
+    <span class="count">соняшник · енвайромент</span>
+  </div>
+
+  <!-- Соняшник -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Соняшник</h3>
+      <span class="sub-count">6 рефів</span>
+    </div>
+    <div class="refs">
+      <div class="ref">
+        <a href="refs/sunflower/sunflower-stage-1-cracking.png" target="_blank">
+          <img src="refs/sunflower/sunflower-stage-1-cracking.png" alt="sunflower opening stage 1">
+        </a>
+        <div class="cap">стадія 1 · починає відкриватись</div>
+      </div>
+      <div class="ref">
+        <a href="refs/sunflower/sunflower-stage-2-half.png" target="_blank">
+          <img src="refs/sunflower/sunflower-stage-2-half.png" alt="sunflower opening stage 2">
+        </a>
+        <div class="cap">стадія 2 · напіввідкритий</div>
+      </div>
+      <div class="ref">
+        <a href="refs/sunflower/sunflower-stage-3-bloom.png" target="_blank">
+          <img src="refs/sunflower/sunflower-stage-3-bloom.png" alt="sunflower full bloom">
+        </a>
+        <div class="cap">стадія 3 · повний bloom</div>
+      </div>
+      <div class="ref">
+        <a href="refs/sunflower/sunflower-infected-bud-v2.png" target="_blank">
+          <img src="refs/sunflower/sunflower-infected-bud-v2.png" alt="infected bud">
+        </a>
+        <div class="cap">кошикова форма · біла гниль</div>
+      </div>
+      <div class="ref">
+        <a href="refs/sunflower/sunflower-infected-stem-v2.png" target="_blank">
+          <img src="refs/sunflower/sunflower-infected-stem-v2.png" alt="infected stem">
+        </a>
+        <div class="cap">стеблова форма · біла гниль</div>
+      </div>
+      <div class="ref">
+        <a href="refs/sunflower/sunflower-late-stage-v2.png" target="_blank">
+          <img src="refs/sunflower/sunflower-late-stage-v2.png" alt="mid-stage infection">
+        </a>
+        <div class="cap">розвиток хвороби · мід-стадія</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Енвайромент -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Енвайромент</h3>
+      <span class="sub-count">4 рефи</span>
+    </div>
+    <div class="refs">
+      <div class="ref">
+        <a href="refs/enhanced/phc-1-enhanced.png" target="_blank">
+          <img src="refs/enhanced/phc-1-enhanced.png" alt="rhizosphere bacteria around root">
+        </a>
+        <div class="cap">ризосфера · бактерії на корені</div>
+      </div>
+      <div class="ref">
+        <a href="refs/enhanced/phc-2-enhanced.png" target="_blank">
+          <img src="refs/enhanced/phc-2-enhanced.png" alt="cross-section sprout in soil">
+        </a>
+        <div class="cap">cross-section · паросток у ґрунті</div>
+      </div>
+      <div class="ref">
+        <a href="refs/enhanced/phc-4-enhanced.png" target="_blank">
+          <img src="refs/enhanced/phc-4-enhanced.png" alt="root system top-down">
+        </a>
+        <div class="cap">коренева система · top-down</div>
+      </div>
+      <div class="ref">
+        <a href="refs/enhanced/phc-5-enhanced.png" target="_blank">
+          <img src="refs/enhanced/phc-5-enhanced.png" alt="root surface with hyphae">
+        </a>
+        <div class="cap">мікориза · гіфи на корені</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 2D / Плашки ============== -->
+<section id="sec-2d">
+  <div class="section-head">
+    <span class="num">02</span>
+    <h2>2D / Плашки</h2>
+    <span class="count">9 lower thirds · BTU style</span>
+  </div>
+
+  <div class="mini-palette" id="mp-plates">
+    <span class="mp-label">Колір плашок</span>
+    <div class="mp-row">
+      <div class="mp-sw is-active" data-color="#F3D54E" style="background:#F3D54E" title="P 128 · Sklerocid"></div>
+      <div class="mp-sw" data-color="#7FADE3" style="background:#7FADE3" title="P 2142"></div>
+      <div class="mp-sw" data-color="#93DA49" style="background:#93DA49" title="P 2285"></div>
+      <div class="mp-sw" data-color="#E782A9" style="background:#E782A9" title="P 204"></div>
+      <div class="mp-sw" data-color="#FF8674" style="background:#FF8674" title="P 170"></div>
+      <div class="mp-sw" data-color="#986A4C" style="background:#986A4C" title="P 2468"></div>
+      <div class="mp-sw" data-color="#BABBB1" style="background:#BABBB1" title="P 413"></div>
+      <div class="mp-sw" data-color="#A7A4E0" style="background:#A7A4E0" title="P 2705"></div>
+      <div class="mp-sw" data-color="#B7DDE1" style="background:#B7DDE1" title="P 628"></div>
+      <div class="mp-sw" data-color="#FB8132" style="background:#FB8132" title="P 6018"></div>
+      <div class="mp-sw" data-color="#FFFFFF" style="background:#FFFFFF" title="White"></div>
+    </div>
+  </div>
+
+  <div class="refs">
+
+    <!-- 1. Block on yellow + line on top-left -->
+    <div class="lt-card">
+      <span class="lt-cap">01 · block + line</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <rect x="20" y="125" width="3" height="44" fill="#fff"/>
+        <rect class="lt-yellow" x="28" y="130" width="220" height="35" rx="2"/>
+        <text class="t-name" x="40" y="153" font-size="16">SCLEROTINIA</text>
+        <text class="t-sub"  x="28" y="183" fill="#fff">Біла гниль</text>
+      </svg>
+    </div>
+
+    <!-- 2. Logo + product name on yellow -->
+    <div class="lt-card">
+      <span class="lt-cap">02 · logo + name</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <text class="t-name" x="28" y="148" font-size="22" fill="#fff">BTU</text>
+        <rect class="lt-yellow" x="78" y="128" width="170" height="28" rx="2"/>
+        <text class="t-name t-on-yellow" x="86" y="148" font-size="15">Склероцид</text>
+        <text class="t-sub"  x="28" y="174" fill="#fff">Біофунгіцид</text>
+      </svg>
+    </div>
+
+    <!-- 3. Big number hero -->
+    <div class="lt-card">
+      <span class="lt-cap">03 · number hero</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <text class="t-name" x="28" y="158" font-size="64" fill="#fff">85<tspan class="lt-yellow">%</tspan></text>
+        <rect class="lt-yellow" x="28" y="170" width="64" height="2"/>
+        <text class="t-sub" x="28" y="188" fill="rgba(255,255,255,0.7)">Стикалися з хворобою</text>
+      </svg>
+    </div>
+
+    <!-- 4. Italic latin + accent line -->
+    <div class="lt-card">
+      <span class="lt-cap">04 · italic latin</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <text class="t-name" x="28" y="148" font-size="18" fill="#fff" font-style="italic">Bacillus licheniformis</text>
+        <rect class="lt-yellow" x="28" y="156" width="80" height="3"/>
+        <text class="t-sub" x="28" y="178" fill="rgba(255,255,255,0.75)">Знижує інфекційний фон</text>
+      </svg>
+    </div>
+
+    <!-- 5. Yellow vertical bar + name -->
+    <div class="lt-card">
+      <span class="lt-cap">05 · vertical bar</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <rect class="lt-yellow" x="22" y="118" width="6" height="56"/>
+        <text class="t-name" x="38" y="142" font-size="15" fill="#fff" font-style="italic">Paraphaeosphaeria</text>
+        <text class="t-name" x="38" y="160" font-size="15" fill="#fff" font-style="italic">minitans</text>
+        <text class="t-sub"  x="38" y="178" fill="rgba(255,255,255,0.7)">Гіперпаразит</text>
+      </svg>
+    </div>
+
+    <!-- 6. Block + caption below -->
+    <div class="lt-card">
+      <span class="lt-cap">06 · block + caption</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <rect class="lt-yellow" x="28" y="118" width="200" height="36" rx="2"/>
+        <text class="t-name t-on-yellow" x="40" y="143" font-size="18">Sklerocid Forte</text>
+        <text class="t-sub" x="28" y="176" fill="#fff">Стеблова форма білої гнилі</text>
+      </svg>
+    </div>
+
+    <!-- 7. Right-aligned + line -->
+    <div class="lt-card">
+      <span class="lt-cap">07 · right + line</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <text class="t-name" x="292" y="142" font-size="16" fill="#fff" text-anchor="end">10 РОКІВ</text>
+        <rect class="lt-yellow" x="220" y="150" width="72" height="3"/>
+        <text class="t-sub" x="292" y="172" fill="rgba(255,255,255,0.75)" text-anchor="end">Склероції в ґрунті</text>
+      </svg>
+    </div>
+
+    <!-- 8. Boxed outline -->
+    <div class="lt-card">
+      <span class="lt-cap">08 · boxed outline</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <rect x="28" y="120" width="240" height="56" fill="none" stroke="#fff" stroke-width="1.5"/>
+        <rect class="lt-yellow" x="28" y="120" width="6" height="56"/>
+        <text class="t-name" x="48" y="146" font-size="15" fill="#fff" font-style="italic">Trichoderma harzianum</text>
+        <text class="t-sub" x="48" y="167" fill="rgba(255,255,255,0.7)">Мікопаразит-мисливець</text>
+      </svg>
+    </div>
+
+    <!-- 9. Stat with bar chart -->
+    <div class="lt-card">
+      <span class="lt-cap">09 · stat + bar</span>
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <text class="t-name" x="28" y="148" font-size="36" fill="#fff">83<tspan font-size="22">%</tspan></text>
+        <rect x="28" y="158" width="240" height="6" fill="rgba(255,255,255,0.15)" rx="3"/>
+        <rect class="lt-yellow" x="28" y="158" width="200" height="6" rx="3"/>
+        <text class="t-sub" x="28" y="184" fill="rgba(255,255,255,0.75)">Ефективність Склероциду</text>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== Поле ============== -->
+<section id="sec-field">
+  <div class="section-head">
+    <span class="num">03</span>
+    <h2>Поле · стокові кадри</h2>
+    <span class="count">12 запитів · Envato</span>
+  </div>
+  <p class="section-note">
+    <span>↗</span> Натискання на будь-який блок відкриває пошук на Envato Elements у новій вкладці. Превʼю — це AI-згенеровані референси, не реальні стокові кадри.
+  </p>
+
+  <!-- 1. Соняшникові поля -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Соняшникові поля</h3>
+      <span class="sub-count">4 запити</span>
+    </div>
+    <div class="refs">
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/sunflower-field" style="background-image:url('refs/stock-thumbs/01-sunflower-field.png')">
+        <span class="q-num">01</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Поле соняшнику</div>
+          <div class="q-en">Sunflower field</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/sunflower-field-golden-hour" style="background-image:url('refs/stock-thumbs/02-sunflower-golden-hour.png')">
+        <span class="q-num">02</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Золота година · захід</div>
+          <div class="q-en">Sunflower field golden hour sunset</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/sunflower-aerial-drone" style="background-image:url('refs/stock-thumbs/03-sunflower-aerial.png')">
+        <span class="q-num">03</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Дрон · вид згори</div>
+          <div class="q-en">Sunflower field aerial drone view</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/sunflower-close-up-bee" style="background-image:url('refs/stock-thumbs/04-sunflower-bee.png')">
+        <span class="q-num">04</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Макро · бджола</div>
+          <div class="q-en">Sunflower close up bee</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. Трактори та сільгосптехніка -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Трактори та сільгосптехніка</h3>
+      <span class="sub-count">4 запити</span>
+    </div>
+    <div class="refs">
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/tractor-working-in-field" style="background-image:url('refs/stock-thumbs/05-tractor-field.png')">
+        <span class="q-num">05</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Трактор у полі</div>
+          <div class="q-en">Tractor working in field</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/tractor-plowing-field" style="background-image:url('refs/stock-thumbs/06-tractor-plowing.png')">
+        <span class="q-num">06</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Посівна / збір врожаю</div>
+          <div class="q-en">Modern tractor plowing field · Harvesting machine</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/tractor-pov-cabin" style="background-image:url('refs/stock-thumbs/07-tractor-pov.png')">
+        <span class="q-num">07</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">POV · вид з кабіни</div>
+          <div class="q-en">Tractor POV inside cabin</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/tractor-wheels-close-up" style="background-image:url('refs/stock-thumbs/08-tractor-wheels.png')">
+        <span class="q-num">08</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Колеса · крупний план</div>
+          <div class="q-en">Tractor wheels close up dirt</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. Загальні пейзажі та фермерство -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Загальні пейзажі та фермерство</h3>
+      <span class="sub-count">4 запити</span>
+    </div>
+    <div class="refs">
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/wheat-field-wind" style="background-image:url('refs/stock-thumbs/09-wheat-wind.png')">
+        <span class="q-num">09</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Пшениця на вітрі</div>
+          <div class="q-en">Wheat field wind blowing</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/farmer-tablet-field" style="background-image:url('refs/stock-thumbs/10-farmer-tablet.png')">
+        <span class="q-num">10</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Фермер з планшетом</div>
+          <div class="q-en">Farmer walking in field with digital tablet</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/agricultural-landscape-countryside" style="background-image:url('refs/stock-thumbs/11-landscape.png')">
+        <span class="q-num">11</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Сільський краєвид</div>
+          <div class="q-en">Agricultural landscape countryside</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/irrigation-system-field" style="background-image:url('refs/stock-thumbs/12-irrigation.png')">
+        <span class="q-num">12</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Полив полів</div>
+          <div class="q-en">Irrigation system field</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Лабораторія ============== -->
+<section id="sec-lab">
+  <div class="section-head">
+    <span class="num">04</span>
+    <h2>Лабораторія</h2>
+    <span class="count">12 запитів · Envato</span>
+  </div>
+  <p class="section-note">
+    <span>↗</span> Натискання на будь-який блок відкриває пошук на Envato Elements у новій вкладці. Превʼю — це AI-згенеровані референси, не реальні стокові кадри.
+  </p>
+
+  <!-- 1. Загальні плани (атмосфера) -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Загальні плани · атмосфера</h3>
+      <span class="sub-count">4 запити</span>
+    </div>
+    <div class="refs">
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/modern-medical-laboratory-interior" style="background-image:url('refs/lab-thumbs/01-modern-lab.png')">
+        <span class="q-num">01</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Сучасна лабораторія</div>
+          <div class="q-en">Modern medical laboratory interior</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/scientists-working-research-lab" style="background-image:url('refs/lab-thumbs/02-scientists-working.png')">
+        <span class="q-num">02</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Робота вчених</div>
+          <div class="q-en">Scientists working in research lab</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/chemical-laboratory-experiment" style="background-image:url('refs/lab-thumbs/03-chemistry.png')">
+        <span class="q-num">03</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Хімічна лабораторія</div>
+          <div class="q-en">Chemical laboratory research experiment</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/clean-room-pharmaceutical-manufacturing" style="background-image:url('refs/lab-thumbs/04-clean-room.png')">
+        <span class="q-num">04</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Стерильна зона</div>
+          <div class="q-en">Clean room pharmaceutical manufacturing</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. Детальні плани -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Детальні плани · close-up</h3>
+      <span class="sub-count">4 запити</span>
+    </div>
+    <div class="refs">
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/scientist-microscope-close-up" style="background-image:url('refs/lab-thumbs/05-microscope.png')">
+        <span class="q-num">05</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Мікроскоп</div>
+          <div class="q-en">Scientist looking through microscope close up</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/pipette-test-tube" style="background-image:url('refs/lab-thumbs/06-pipette.png')">
+        <span class="q-num">06</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Піпетка та пробірки</div>
+          <div class="q-en">Pipette dripping liquid into test tube</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/blood-sample-testing-laboratory" style="background-image:url('refs/lab-thumbs/07-blood-test.png')">
+        <span class="q-num">07</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Аналіз крові</div>
+          <div class="q-en">Blood sample testing laboratory</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/petri-dish-cell-culture" style="background-image:url('refs/lab-thumbs/08-petri.png')">
+        <span class="q-num">08</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Чашка Петрі</div>
+          <div class="q-en">Petri dish cell culture research</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. Технологічні · футуристичні -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Технологічні · футуристичні</h3>
+      <span class="sub-count">4 запити</span>
+    </div>
+    <div class="refs">
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/automated-laboratory-robotic-arm" style="background-image:url('refs/lab-thumbs/09-robotic-arm.png')">
+        <span class="q-num">09</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Роботизована лаба</div>
+          <div class="q-en">Automated laboratory robotic arm</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/genetic-engineering-research-dna" style="background-image:url('refs/lab-thumbs/10-dna.png')">
+        <span class="q-num">10</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Генетика · ДНК</div>
+          <div class="q-en">Genetic engineering research DNA</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/doctor-digital-tablet-laboratory" style="background-image:url('refs/lab-thumbs/11-tablet.png')">
+        <span class="q-num">11</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Цифрова медицина</div>
+          <div class="q-en">Doctor using digital tablet in lab</div>
+        </div>
+      </a>
+      <a class="stock-q" target="_blank" href="https://elements.envato.com/stock-video/time-lapse-laboratory" style="background-image:url('refs/lab-thumbs/12-time-lapse.png')">
+        <span class="q-num">12</span>
+        <span class="q-arrow">↗</span>
+        <div>
+          <div class="q-title">Time lapse</div>
+          <div class="q-en">Time lapse laboratory work</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Кольорокорекція ============== -->
+<section id="sec-color">
+  <div class="section-head">
+    <span class="num">05</span>
+    <h2>Кольорокорекція · color grading</h2>
+    <span class="count">референси по локаціях</span>
+  </div>
+  <p class="section-note">
+    <span>↗</span> Референси для color grading — окремо для зйомок у полі та в лабораторії. Чекаю на твої матеріали — додам сюди.
+  </p>
+
+  <!-- Поле -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Поле</h3>
+      <span class="sub-count">cinematic pastoral · европейський indie-look</span>
+    </div>
+    <div class="color-spec">
+      <div class="color-spec-img">
+        <img src="refs/color-grade/field/source-pastoral.png" alt="field color reference">
+        <div class="cs-tag">2.35:1 · pastoral cinematic</div>
+      </div>
+      <div class="color-spec-text">
+        <h4>Загальна ідея</h4>
+        <p style="margin:0; color:var(--fg);">Природний європейський pastoral. Чітке розділення між небом і полем. Soft cinematic look — без instagram-стилізації, без жорстких peaks. Натуральні зелені, м'який сіро-блакитний у небі, теплі акценти на квіти/одяг.</p>
+
+        <h4>Палітра</h4>
+        <div class="cs-swatches">
+          <div class="cs-sw" style="background:#7e9b6d" title="field green"></div>
+          <div class="cs-sw" style="background:#a8b89c" title="grass mid"></div>
+          <div class="cs-sw" style="background:#c5cdc9" title="sky cool"></div>
+          <div class="cs-sw" style="background:#d9c8b0" title="warm highlight"></div>
+          <div class="cs-sw" style="background:#3d4a3a" title="tree shadow"></div>
+        </div>
+
+        <h4>Параметри</h4>
+        <ul>
+          <li><b>Контраст</b>середньо-низький, lifted shadows</li>
+          <li><b>Saturation</b>70–80%, природна</li>
+          <li><b>Shadows</b>+5 lift, легкий зелено-сірий pull</li>
+          <li><b>Highlights</b>roll-off ~85%, без burn</li>
+          <li><b>Split tones</b>shadows green-gray · highlights warm-orange</li>
+          <li><b>LUT</b>ARRI K1S1 → log → cinematic</li>
+          <li><b>Grain</b>35mm, легке зерно</li>
+          <li><b>Aspect</b>2.35:1 anamorphic crop</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Лабораторія -->
+  <div class="subgroup">
+    <div class="sub-head">
+      <h3>Лабораторія</h3>
+      <span class="sub-count">2 напрямки · cinematic + hi-tech</span>
+    </div>
+
+    <!-- Lab #1: hi-tech wide architectural -->
+    <div class="color-spec" style="margin-bottom: 20px;">
+      <div class="color-spec-img">
+        <img src="refs/color-grade/lab/source-hitech-wide.png" alt="lab hi-tech wide">
+        <div class="cs-tag">wide · architectural hi-tech</div>
+      </div>
+      <div class="color-spec-text">
+        <h4>Загальна ідея</h4>
+        <p style="margin:0; color:var(--fg);">Архітектурний wide shot ультра-сучасної лабораторії. Світлий чистий look, lighting strips на стелі, зелень рослин по краях, мармурові столи. "Living laboratory" — біо-tech з ноткою сталого розвитку.</p>
+
+        <h4>Палітра</h4>
+        <div class="cs-swatches">
+          <div class="cs-sw" style="background:#252a30" title="dark accent"></div>
+          <div class="cs-sw" style="background:#9aa3ad" title="cool gray"></div>
+          <div class="cs-sw" style="background:#d8dde2" title="floor light"></div>
+          <div class="cs-sw" style="background:#f1f4f6" title="bright highlight"></div>
+          <div class="cs-sw" style="background:#5a8245" title="plant green"></div>
+        </div>
+
+        <h4>Параметри</h4>
+        <ul>
+          <li><b>Mood</b>clean, bright, futuristic</li>
+          <li><b>Контраст</b>низький, soft, lifted shadows</li>
+          <li><b>Saturation</b>помірна, природні зелені від рослин</li>
+          <li><b>Shadows</b>neutral cool gray</li>
+          <li><b>Highlights</b>bright but not blown</li>
+          <li><b>White balance</b>злегка холодний (~5500K)</li>
+          <li><b>Linework</b>підкреслені LED-смуги, геометрія</li>
+          <li><b>Aspect</b>2.35:1 wide architectural</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Lab #2: cinematic blue close-up -->
+    <div class="color-spec">
+      <div class="color-spec-img">
+        <img src="refs/color-grade/lab/source-blue-glassware.png" alt="lab cinematic close-up">
+        <div class="cs-tag">close-up · cinematic blue</div>
+      </div>
+      <div class="color-spec-text">
+        <h4>Загальна ідея</h4>
+        <p style="margin:0; color:var(--fg);">Cinematic close-up зі склом і реактивами. Холодний блакитно-teal mood, м'яке свічення позаду, depth of field. Атмосфера серйозної наукової роботи. Зелений акцент від реактиву — точкова деталь.</p>
+
+        <h4>Палітра</h4>
+        <div class="cs-swatches">
+          <div class="cs-sw" style="background:#0c1a26" title="deep shadow"></div>
+          <div class="cs-sw" style="background:#3a6b88" title="teal mid"></div>
+          <div class="cs-sw" style="background:#a8cdda" title="cool highlight"></div>
+          <div class="cs-sw" style="background:#cbe9f0" title="glow"></div>
+          <div class="cs-sw" style="background:#a8c542" title="reagent green"></div>
+        </div>
+
+        <h4>Параметри</h4>
+        <ul>
+          <li><b>Mood</b>cool teal-blue, clinical</li>
+          <li><b>Контраст</b>середньо-високий, глибокі shadows</li>
+          <li><b>Saturation</b>десатур до ~60%, окрім reagent green</li>
+          <li><b>Shadows</b>shifted to teal/cyan</li>
+          <li><b>Highlights</b>cool blue glow, soft halation</li>
+          <li><b>DOF</b>shallow, focus на скло</li>
+          <li><b>Bloom</b>soft halation на світлі точки</li>
+          <li><b>Grain</b>помітний film grain для mood</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Склероцид · Moodboard v1.4</span>
+  <span>BTU Biotech Company · Nature works</span>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  const root    = document.documentElement;
+  const palette = document.getElementById('palette');
+  const logoCard = document.getElementById('logo-card');
+
+  // perceived luminance (sRGB → relative luminance approx)
+  function isDark(hex) {
+    const h = hex.replace('#','');
+    const r = parseInt(h.slice(0,2),16);
+    const g = parseInt(h.slice(2,4),16);
+    const b = parseInt(h.slice(4,6),16);
+    // simple luma (Rec. 709)
+    const lum = 0.2126*r + 0.7152*g + 0.0722*b;
+    return lum < 140;
+  }
+
+  function applyAccent(hex) {
+    root.style.setProperty('--accent', hex);
+    // logo card background
+    logoCard.style.background = hex;
+    logoCard.style.borderColor = hex;
+    logoCard.dataset.color = hex;
+    if (isDark(hex)) logoCard.classList.add('on-dark');
+    else             logoCard.classList.remove('on-dark');
+    // mark selected swatch
+    palette.querySelectorAll('.swatch').forEach(sw => sw.classList.remove('is-accent'));
+    const active = palette.querySelector('.swatch[data-color="' + hex + '"]');
+    if (active) active.classList.add('is-accent');
+  }
+
+  palette.addEventListener('click', (e) => {
+    const sw = e.target.closest('.swatch');
+    if (!sw) return;
+    applyAccent(sw.dataset.color);
+  });
+
+  // ---- mini palette for lower-third plates (independent of brand accent) ----
+  const mpPlates = document.getElementById('mp-plates');
+  if (mpPlates) {
+    mpPlates.addEventListener('click', (e) => {
+      const sw = e.target.closest('.mp-sw');
+      if (!sw) return;
+      const hex = sw.dataset.color;
+      root.style.setProperty('--plate-accent', hex);
+      root.style.setProperty('--plate-text-on', isDark(hex) ? '#fff' : '#000');
+      mpPlates.querySelectorAll('.mp-sw').forEach(x => x.classList.remove('is-active'));
+      sw.classList.add('is-active');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
