@@ -1581,6 +1581,14 @@ footer {
 
 <script>
 (function () {
+  // Always start at top on fresh page load; strip URL hash if present
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+  window.scrollTo(0, 0);
+  document.addEventListener('DOMContentLoaded', () => window.scrollTo(0, 0));
+
   const root    = document.documentElement;
   const palette = document.getElementById('palette');
   const logoCard = document.getElementById('logo-card');
